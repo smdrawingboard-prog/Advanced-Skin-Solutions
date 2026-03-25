@@ -332,6 +332,15 @@ footer a:hover{color:var(--gold-lt)}
 .sage-send:disabled{opacity:.4;cursor:not-allowed}
 .sage-send svg{width:16px;height:16px;fill:currentColor}
 
+/* product chips */
+.sage-product-chips{display:flex;flex-direction:column;gap:6px;margin:-4px 0 4px 0;align-self:flex-start;max-width:88%;animation:fadeUp .25s ease}
+.sage-product-chip{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:9px 12px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.spc-name{font-size:12px;font-weight:500;color:var(--charcoal);flex:1;line-height:1.3}
+.spc-price{font-size:11px;color:var(--gold);font-weight:600;white-space:nowrap}
+.spc-btn{background:var(--charcoal);color:#fff;border:none;padding:5px 12px;border-radius:50px;font-size:10px;letter-spacing:.8px;text-transform:uppercase;cursor:pointer;transition:all .2s;font-family:inherit;white-space:nowrap;flex-shrink:0}
+.spc-btn:hover:not(:disabled){background:var(--gold);color:var(--deep)}
+.spc-btn:disabled{background:var(--gold);color:var(--deep);cursor:default}
+
 @media(max-width:480px){.sage-panel{left:12px;right:12px;width:auto;max-width:none;bottom:80px}}
 </style>
 
@@ -803,6 +812,31 @@ var sageHistory = [];
 var sageOpen = false;
 var sageBusy = false;
 
+// Find all products mentioned in a bot message and render "Add to Cart" chips
+function sageRenderProductChips(botEl, text) {
+  var lower = text.toLowerCase();
+  var found = [];
+  P.forEach(function(prod, idx) {
+    if (lower.includes(prod.n.toLowerCase())) found.push(idx);
+  });
+  if (!found.length) return;
+
+  var chips = document.createElement('div');
+  chips.className = 'sage-product-chips';
+  found.forEach(function(idx) {
+    var prod = P[idx];
+    var chip = document.createElement('div');
+    chip.className = 'sage-product-chip';
+    chip.innerHTML =
+      '<span class="spc-name">' + prod.n + '</span>' +
+      '<span class="spc-price">R' + prod.p + '</span>' +
+      '<button class="spc-btn" onclick="addC(' + idx + ');this.textContent=\'✓ Added\';this.disabled=true">Add to Cart</button>';
+    chips.appendChild(chip);
+  });
+  botEl.insertAdjacentElement('afterend', chips);
+  document.getElementById('sageMsgs').scrollTop = 99999;
+}
+
 function toggleSage() {
   sageOpen = !sageOpen;
   document.getElementById('sagePanel').classList.toggle('open', sageOpen);
@@ -879,6 +913,7 @@ function sageSend() {
       reader.read().then(function(result) {
         if (result.done) {
           sageHistory.push({ role: 'assistant', content: fullText });
+          sageRenderProductChips(botEl, fullText);
           sageBusy = false;
           document.getElementById('sageSendBtn').disabled = false;
           document.getElementById('sageMsgs').scrollTop = 99999;
