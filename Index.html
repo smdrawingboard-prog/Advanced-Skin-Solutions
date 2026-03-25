@@ -286,6 +286,53 @@ footer a:hover{color:var(--gold-lt)}
 
 @media(max-width:900px){.hnav{display:none}.ft-i{grid-template-columns:1fr 1fr}.hero{padding:60px 20px 68px}.grid{grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:10px}.prod-img{height:160px}.sec{padding:32px 16px 16px}.qban-i{grid-template-columns:1fr}.qbs{flex-direction:row;gap:20px}}
 @media(max-width:600px){.ft-i{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr;gap:8px}.prod-info{padding:10px 10px 12px}.prod-name{font-size:12px}.prod-desc{display:none}.toolbar{flex-direction:column}.spc{grid-template-columns:1fr;gap:14px;padding:22px 18px}.rg{grid-template-columns:1fr 1fr;gap:10px}.rc-img{height:130px}.cta-s{padding:28px 18px}.cta-ir{flex-direction:column}.og2{grid-template-columns:1fr}.irow{grid-template-columns:1fr}.hero-stats{gap:20px}.hact{gap:6px}.qbtn{display:none}.modal-img{height:200px}.ft-bot{flex-direction:column;gap:4px;text-align:center}}
+
+/* ── AI SKIN CONSULTANT CHAT WIDGET ── */
+.sage-fab{position:fixed;bottom:24px;left:24px;z-index:998;width:56px;height:56px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(201,169,110,.5);transition:all .3s;border:none}
+.sage-fab:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(201,169,110,.6)}
+.sage-fab svg{width:26px;height:26px;fill:var(--deep)}
+.sage-fab .sage-badge{position:absolute;top:-4px;right:-4px;background:#ef4444;color:#fff;font-size:9px;font-weight:700;width:16px;height:16px;border-radius:50%;display:none;align-items:center;justify-content:center}
+.sage-badge.visible{display:flex}
+
+.sage-panel{position:fixed;bottom:92px;left:24px;z-index:997;width:360px;max-width:calc(100vw - 48px);background:var(--warm);border-radius:20px;box-shadow:0 16px 60px rgba(0,0,0,.18);display:flex;flex-direction:column;overflow:hidden;transform:scale(.92) translateY(20px);opacity:0;pointer-events:none;transition:all .3s cubic-bezier(.4,0,.2,1);transform-origin:bottom left;max-height:520px}
+.sage-panel.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+
+.sage-head{background:var(--ink);color:#fff;padding:16px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0}
+.sage-avatar{width:38px;height:38px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sage-avatar svg{width:20px;height:20px;fill:var(--deep)}
+.sage-head-info{flex:1}
+.sage-head-name{font-family:'Playfair Display',serif;font-size:15px;font-weight:500}
+.sage-head-sub{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.5px}
+.sage-head-x{background:none;border:none;color:rgba(255,255,255,.5);cursor:pointer;font-size:20px;padding:2px 6px;transition:color .2s;line-height:1}
+.sage-head-x:hover{color:#fff}
+
+.sage-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth}
+.sage-msgs::-webkit-scrollbar{width:4px}
+.sage-msgs::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+
+.sage-bubble{max-width:88%;padding:11px 14px;border-radius:14px;font-size:13px;line-height:1.55;animation:fadeUp .25s ease}
+.sage-bubble.bot{background:var(--cream);color:var(--charcoal);border-bottom-left-radius:4px;align-self:flex-start}
+.sage-bubble.user{background:var(--gold);color:var(--deep);border-bottom-right-radius:4px;align-self:flex-end;font-weight:500}
+.sage-bubble.typing{background:var(--cream);align-self:flex-start}
+.sage-bubble.typing span{display:inline-block;width:6px;height:6px;background:var(--dove);border-radius:50%;animation:sageDot 1.2s infinite;margin:0 2px}
+.sage-bubble.typing span:nth-child(2){animation-delay:.2s}
+.sage-bubble.typing span:nth-child(3){animation-delay:.4s}
+@keyframes sageDot{0%,80%,100%{transform:scale(.6);opacity:.4}40%{transform:scale(1);opacity:1}}
+
+.sage-suggestions{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 12px;flex-shrink:0}
+.sage-sug{background:var(--cream);border:1.5px solid var(--border);color:var(--steel);font-size:11px;padding:6px 12px;border-radius:50px;cursor:pointer;transition:all .2s;font-family:inherit}
+.sage-sug:hover{background:var(--gold);color:var(--deep);border-color:var(--gold)}
+
+.sage-input-row{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--pearl);flex-shrink:0;background:var(--warm)}
+.sage-input{flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:50px;font-family:inherit;font-size:13px;color:var(--charcoal);background:var(--cream);outline:none;transition:border-color .2s}
+.sage-input:focus{border-color:var(--gold)}
+.sage-input::placeholder{color:#b5b0aa}
+.sage-send{background:var(--charcoal);color:#fff;border:none;width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.sage-send:hover{background:var(--gold);color:var(--deep)}
+.sage-send:disabled{opacity:.4;cursor:not-allowed}
+.sage-send svg{width:16px;height:16px;fill:currentColor}
+
+@media(max-width:480px){.sage-panel{left:12px;right:12px;width:auto;max-width:none;bottom:80px}}
 </style>
 
 </head>
@@ -711,6 +758,166 @@ function saveCTA(){var e=document.getElementById('ctaE').value.trim();if(!e||e.i
 function toast(m){var t=document.getElementById('tst');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},3800)}
 
 render();
+</script>
+
+<!-- ── AI SKIN CONSULTANT WIDGET ── -->
+<button class="sage-fab" id="sageFab" onclick="toggleSage()" aria-label="Chat with Sage, our AI Skin Consultant">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+  <span class="sage-badge" id="sageBadge">1</span>
+</button>
+
+<div class="sage-panel" id="sagePanel" role="dialog" aria-label="AI Skin Consultant">
+  <div class="sage-head">
+    <div class="sage-avatar">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+    </div>
+    <div class="sage-head-info">
+      <div class="sage-head-name">Sage</div>
+      <div class="sage-head-sub">AI SKIN CONSULTANT · ONLINE</div>
+    </div>
+    <button class="sage-head-x" onclick="toggleSage()" aria-label="Close chat">×</button>
+  </div>
+
+  <div class="sage-msgs" id="sageMsgs"></div>
+
+  <div class="sage-suggestions" id="sageSugs">
+    <button class="sage-sug" onclick="sageAsk('What products are good for anti-ageing?')">Anti-ageing</button>
+    <button class="sage-sug" onclick="sageAsk('Help with dark spots and pigmentation')">Pigmentation</button>
+    <button class="sage-sug" onclick="sageAsk('My skin is oily and I get breakouts')">Oily/Acne</button>
+    <button class="sage-sug" onclick="sageAsk('Build me a simple morning routine')">Morning routine</button>
+  </div>
+
+  <div class="sage-input-row">
+    <input class="sage-input" id="sageInput" type="text" placeholder="Ask about your skin…" maxlength="400"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sageSend()}"/>
+    <button class="sage-send" id="sageSendBtn" onclick="sageSend()" aria-label="Send message">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+// ── Sage AI Chat ──
+var SAGE_API = (window.SAGE_API_URL || 'http://localhost:3001') + '/api/chat';
+var sageHistory = [];
+var sageOpen = false;
+var sageBusy = false;
+
+function toggleSage() {
+  sageOpen = !sageOpen;
+  document.getElementById('sagePanel').classList.toggle('open', sageOpen);
+  document.getElementById('sageBadge').classList.remove('visible');
+  if (sageOpen && sageHistory.length === 0) sageGreet();
+  if (sageOpen) setTimeout(function(){ document.getElementById('sageInput').focus(); }, 320);
+}
+
+function sageGreet() {
+  sageAppend('bot', "Hi! I'm Sage 👋 — your personal skin consultant at Advanced Skin Solutions.\n\nTell me about your skin type or concern and I'll recommend the right products for you.");
+}
+
+function sageAppend(role, text) {
+  var msgs = document.getElementById('sageMsgs');
+  var el = document.createElement('div');
+  el.className = 'sage-bubble ' + role;
+  el.textContent = text;
+  msgs.appendChild(el);
+  msgs.scrollTop = msgs.scrollHeight;
+  return el;
+}
+
+function sageTyping() {
+  var msgs = document.getElementById('sageMsgs');
+  var el = document.createElement('div');
+  el.className = 'sage-bubble typing';
+  el.id = 'sageTyping';
+  el.innerHTML = '<span></span><span></span><span></span>';
+  msgs.appendChild(el);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function sageRemoveTyping() {
+  var el = document.getElementById('sageTyping');
+  if (el) el.remove();
+}
+
+function sageAsk(text) {
+  document.getElementById('sageInput').value = text;
+  sageSend();
+  document.getElementById('sageSugs').style.display = 'none';
+}
+
+function sageSend() {
+  if (sageBusy) return;
+  var input = document.getElementById('sageInput');
+  var text = input.value.trim();
+  if (!text) return;
+
+  input.value = '';
+  sageAppend('user', text);
+  sageHistory.push({ role: 'user', content: text });
+  document.getElementById('sageSendBtn').disabled = true;
+  sageBusy = true;
+  sageTyping();
+
+  // Keep last 20 turns to avoid excessive context
+  var msgs = sageHistory.slice(-20);
+
+  fetch(SAGE_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ messages: msgs })
+  }).then(function(res) {
+    if (!res.ok) throw new Error('API error ' + res.status);
+    sageRemoveTyping();
+    var botEl = sageAppend('bot', '');
+    var fullText = '';
+    var reader = res.body.getReader();
+    var decoder = new TextDecoder();
+    var buffer = '';
+
+    function read() {
+      reader.read().then(function(result) {
+        if (result.done) {
+          sageHistory.push({ role: 'assistant', content: fullText });
+          sageBusy = false;
+          document.getElementById('sageSendBtn').disabled = false;
+          document.getElementById('sageMsgs').scrollTop = 99999;
+          return;
+        }
+        buffer += decoder.decode(result.value, { stream: true });
+        var parts = buffer.split('\n\n');
+        buffer = parts.pop();
+        parts.forEach(function(part) {
+          if (!part.startsWith('data: ')) return;
+          try {
+            var payload = JSON.parse(part.slice(6));
+            if (payload.text) {
+              fullText += payload.text;
+              botEl.textContent = fullText;
+              document.getElementById('sageMsgs').scrollTop = 99999;
+            }
+            if (payload.done || payload.error) {
+              sageBusy = false;
+              document.getElementById('sageSendBtn').disabled = false;
+            }
+          } catch(e) {}
+        });
+        read();
+      });
+    }
+    read();
+  }).catch(function(err) {
+    sageRemoveTyping();
+    sageAppend('bot', "Sorry, I'm having trouble connecting right now. Please try again or contact us via WhatsApp.");
+    sageBusy = false;
+    document.getElementById('sageSendBtn').disabled = false;
+  });
+}
+
+// Show notification badge after 4s if chat hasn't been opened
+setTimeout(function() {
+  if (!sageOpen) document.getElementById('sageBadge').classList.add('visible');
+}, 4000);
 </script>
 
 </body></html>
